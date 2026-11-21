@@ -81,5 +81,21 @@ extension User {
             Friend(id: UUID(uuidString: "0c395a95-57e2-4d53-b4f6-9b9e46a32cf6")!, name: "Jewel Sexton")
         ]
     )
+
+    static let offlineExample = User(
+        id: UUID(uuidString: "91b5be3d-9a19-4ac2-b2ce-89cc41884ed0")!,
+        isActive: false,
+        name: "Hawkins Patel",
+        age: 34,
+        company: "Omnico",
+        email: "hawkinspatel@omnico.com",
+        address: "412 Elmwood Avenue, Portland, Oregon, 97201",
+        about: "Fugiat quis nostrud anim esse labore amet cupidatat sint laborum. Aliquip nisi excepteur sint dolor eu id dolor.",
+        registered: Calendar.current.date(byAdding: .year, value: -2, to: .now) ?? .now,
+        tags: ["laborum", "cupidatat", "aliquip"],
+        friends: [
+            Friend(id: UUID(uuidString: "50a48fa3-2c0f-4397-ac50-64da464f9954")!, name: "Alford Rodriguez")
+        ]
+    )
 }
 #endif

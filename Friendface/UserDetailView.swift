@@ -246,3 +246,22 @@ private struct FriendRow: View {
         .padding(.horizontal, 4)
     }
 }
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: User.self, Friend.self, configurations: config)
+        let user = User.example
+        let friend = User.offlineExample
+
+        container.mainContext.insert(user)
+        container.mainContext.insert(friend)
+
+        return NavigationStack {
+            UserDetailView(user: user)
+        }
+        .modelContainer(container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
+}

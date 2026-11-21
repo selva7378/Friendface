@@ -85,3 +85,10 @@ struct UserRowView: View {
         .padding(.vertical, 4)
     }
 }
+
+#Preview {
+    List {
+        UserRowView(user: .example)
+        UserRowView(user: .offlineExample)
+    }
+}

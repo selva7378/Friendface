@@ -178,6 +178,15 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: [User.self, Friend.self], inMemory: true)
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: User.self, Friend.self, configurations: config)
+        container.mainContext.insert(User.example)
+        container.mainContext.insert(User.offlineExample)
+
+        return ContentView()
+            .modelContainer(container)
+    } catch {
+        return Text("Failed to create preview: \(error.localizedDescription)")
+    }
 }
